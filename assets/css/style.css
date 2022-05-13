@@ -382,6 +382,10 @@ s {
 .is-hidden {
   display: none !important;
 }
+
+html:not(.js) .no-js\:is-hidden {
+  display: none !important;
+}
 .sr-only {
   position: absolute;
   clip: rect(1px, 1px, 1px, 1px);
@@ -470,12 +474,20 @@ s {
   margin-bottom: var(--space-md);
 }
 
+.margin-right-sm {
+  margin-right: var(--space-sm);
+}
+
 .margin-left-auto {
   margin-left: auto;
 }
 
 .padding-md {
   padding: var(--space-md);
+}
+
+.padding-top-xxs {
+  padding-top: var(--space-xxs);
 }
 
 .padding-top-md {
@@ -961,6 +973,152 @@ h1 {
  .form-control[disabled] {
   opacity: 0.5;
   cursor: not-allowed;
+}
+/* -------------------------------- 
+
+File#: _1_accordion
+Title: Accordion
+Descr: Create stacked sections of content and allow the user to expand/collapse them
+Usage: codyhouse.co/license
+
+-------------------------------- */
+:root {
+  /* general */
+  --accordion-border-width: 1px;
+  /* icon */
+  --accordion-icon-size: 20px;
+  --accordion-icon-stroke-width: 2px;
+}
+
+.accordion__item {
+  border-style: solid;
+  border-color: var(--color-contrast-lower);
+  border-bottom-width: var(--accordion-border-width);
+}
+.accordion__item:first-child {
+  border-top-width: var(--accordion-border-width);
+}
+
+.accordion__header {
+  /* button */
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: left;
+  cursor: pointer;
+}
+.accordion__header .icon {
+  --size: var(--accordion-icon-size);
+}
+.accordion__header .icon .icon__group {
+  stroke-width: var(--accordion-icon-stroke-width);
+}
+
+.accordion__icon-arrow .icon__group,
+.accordion__icon-arrow-v2 .icon__group,
+.accordion__icon-plus .icon__group {
+  will-change: transform;
+  transform-origin: 50% 50%;
+}
+
+.accordion__icon-arrow .icon__group > * {
+  transform-origin: 10px 14px;
+}
+
+.accordion__icon-arrow-v2 .icon__group > * {
+  transform-origin: 50% 50%;
+  stroke-dasharray: 20;
+  transform: translateY(4px);
+}
+.accordion__icon-arrow-v2 .icon__group > *:first-child {
+  stroke-dashoffset: 10.15;
+}
+.accordion__icon-arrow-v2 .icon__group > *:last-child {
+  stroke-dashoffset: 10.15;
+}
+
+.accordion__icon-plus .icon__group {
+  transform: rotate(-90deg);
+}
+.accordion__icon-plus .icon__group > * {
+  transform-origin: 50% 50%;
+}
+.accordion__icon-plus .icon__group > *:first-child {
+  transform: rotate(-90deg);
+}
+
+.accordion__item--is-open > .accordion__header > .accordion__icon-arrow .icon__group {
+  /* animated arrow icon */
+}
+.accordion__item--is-open > .accordion__header > .accordion__icon-arrow .icon__group > *:first-child {
+  transform: translateY(-8px) rotate(-90deg);
+}
+.accordion__item--is-open > .accordion__header > .accordion__icon-arrow .icon__group > *:last-child {
+  transform: translateY(-8px) rotate(90deg);
+}
+.accordion__item--is-open > .accordion__header > .accordion__icon-arrow-v2 .icon__group {
+  /* animated arrow icon v2 */
+  transform: rotate(-90deg);
+}
+.accordion__item--is-open > .accordion__header > .accordion__icon-arrow-v2 .icon__group > *:first-child, .accordion__item--is-open > .accordion__header > .accordion__icon-arrow-v2 .icon__group *:last-child {
+  stroke-dashoffset: 0;
+  transform: translateY(0px);
+}
+.accordion__item--is-open > .accordion__header > .accordion__icon-plus .icon__group {
+  /* animated plus icon */
+  transform: rotate(0);
+}
+.accordion__item--is-open > .accordion__header > .accordion__icon-plus .icon__group > *:first-child {
+  transform: rotate(0);
+}
+
+.js .accordion__panel {
+  display: none;
+  will-change: height;
+  transform: translateZ(0px);
+}
+.js .accordion__item--is-open > .accordion__panel {
+  display: block;
+}
+
+/* animations */
+.accordion[data-animation=on] .accordion__item--is-open .accordion__panel > * {
+  -webkit-animation: accordion-entry-animation 0.4s var(--ease-out);
+          animation: accordion-entry-animation 0.4s var(--ease-out);
+}
+.accordion[data-animation=on] .accordion__icon-arrow .icon__group,
+.accordion[data-animation=on] .accordion__icon-arrow-v2 .icon__group,
+.accordion[data-animation=on] .accordion__icon-plus .icon__group {
+  transition: transform 0.3s var(--ease-out);
+}
+.accordion[data-animation=on] .accordion__icon-arrow .icon__group > *,
+.accordion[data-animation=on] .accordion__icon-arrow-v2 .icon__group > *,
+.accordion[data-animation=on] .accordion__icon-plus .icon__group > * {
+  transition: transform 0.3s, stroke-dashoffset 0.3s;
+  transition-timing-function: var(--ease-out);
+}
+
+@-webkit-keyframes accordion-entry-animation {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+@keyframes accordion-entry-animation {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
 }
 /* -------------------------------- 
 
@@ -1549,6 +1707,88 @@ Usage: codyhouse.co/license
 }
 /* -------------------------------- 
 
+File#: _1_switch
+Title: Switch
+Descr: Custom ON/OFF checkbox toggle
+Usage: codyhouse.co/license
+
+-------------------------------- */
+:root {
+  /* style */
+  --switch-width: 64px;
+  --switch-height: 32px;
+  --switch-padding: 3px;
+  /* animation */
+  --switch-animation-duration: 0.2s;
+}
+
+.switch {
+  position: relative;
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  width: var(--switch-width);
+  height: var(--switch-height);
+  border-radius: 50em;
+  padding: var(--switch-padding) 0;
+}
+
+.switch__input, .switch__label {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.switch__input {
+  margin: 0;
+  padding: 0;
+  opacity: 0;
+  height: 0;
+  width: 0;
+  pointer-events: none;
+}
+.switch__input:checked + .switch__label {
+  background-color: var(--color-primary);
+}
+.switch__input:checked + .switch__label + .switch__marker {
+  left: calc(100% - var(--switch-height) + var(--switch-padding));
+}
+.switch__input:focus + .switch__label, .switch__input:active + .switch__label {
+  box-shadow: 0 0 0 2px hsla(var(--color-contrast-higher-h), var(--color-contrast-higher-s), var(--color-contrast-higher-l), 0.2);
+}
+.switch__input:checked:focus + .switch__label, .switch__input:checked:active + .switch__label {
+  box-shadow: 0 0 0 2px hsla(var(--color-primary-h), var(--color-primary-s), var(--color-primary-l), 0.2);
+}
+
+.switch__label {
+  width: 100%;
+  height: 100%;
+  color: transparent;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  background-color: var(--color-bg-darker);
+  border-radius: inherit;
+  z-index: 1;
+  transition: var(--switch-animation-duration);
+  overflow: hidden;
+}
+
+.switch__marker {
+  position: relative;
+  background-color: var(--color-white);
+  width: calc(var(--switch-height) - var(--switch-padding) * 2);
+  height: calc(var(--switch-height) - var(--switch-padding) * 2);
+  border-radius: 50%;
+  z-index: 2;
+  pointer-events: none;
+  box-shadow: var(--shadow-xs);
+  left: var(--switch-padding);
+  transition: left var(--switch-animation-duration);
+  will-change: left;
+}
+/* -------------------------------- 
+
 File#: _1_tabs
 Title: Tabs
 Descr: A list of content sections (panels), accessible one at a time using control labels
@@ -1570,4 +1810,14 @@ Usage: codyhouse.co/license
 .js .tabs__control[aria-selected=true] {
   color: var(--color-contrast-high);
   text-decoration: underline;
+}
+#cookie-container .accordion__item {
+  position: relative;
+}
+#cookie-container .accordion .accordion-more {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  top: 0;
+  right: 0;
 }
