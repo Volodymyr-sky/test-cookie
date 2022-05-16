@@ -922,6 +922,7 @@ h1 {
 .btn--primary {
   background: var(--color-primary);
   color: var(--color-white);
+  border: 1px solid var(--color-primary);
   box-shadow: inset 0px 1px 0px hsla(var(--color-white-h), var(--color-white-s), var(--color-white-l), 0.15), var(--shadow-xs);
 }
 .btn--primary:hover {
@@ -1830,4 +1831,10 @@ Usage: codyhouse.co/license
 #cookie-container .switch--disabled .switch__label {
   opacity: 0.4;
   cursor: not-allowed;
+}
+#cookie-container .cookies-list li + li {
+  margin-top: var(--space-xs);
+}
+#cookie-container .cookie-policy li + li {
+  margin-top: var(--space-sm);
 }
