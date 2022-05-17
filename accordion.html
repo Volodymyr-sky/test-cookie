@@ -10,10 +10,22 @@
 <body>
 
 <div class="container padding-y-lg" id="cookie-container">
-  <!-- Modal -->
-  <div class="margin-bottom-sm flex items-center justify-between">
-    <a href="/index.php?route=information/information&amp;information_id=3">Privacy policy</a>
-  </div>
+  
+<div class="select">
+  <select
+    class="select__input form-control bg-transparent radius-md padding-y-xxs"
+    v-model="currentLocale"
+    @change="handleChangeLang"                          
+  >
+    <option value="de-de" name="de-de">de</option>
+    <option value="en-gb" name="en-gb">en</option>
+    <option value="ru-ru" name="ru-ru">ru</option>
+  </select>
+  <svg class="icon select__icon" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <rect x="4.22192" y="5.2749" width="6" height="1" rx="0.5" transform="rotate(45 4.22192 5.2749)" />
+    <rect width="6" height="1" rx="0.5" transform="matrix(0.707107 -0.707107 -0.707107 -0.707107 7.75732 10.2246)" />
+  </svg>
+</div>
 </div>
 
 <script src="assets/js/scripts.js"></script>

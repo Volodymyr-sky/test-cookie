@@ -189,7 +189,7 @@ button, input, select {
   margin: 0;
 }
 
-.btn, .link, .reset {
+.btn, .form-control, .link, .reset {
   background-color: transparent;
   padding: 0;
   border: 0;
@@ -199,6 +199,10 @@ button, input, select {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
+}
+
+select.form-control::-ms-expand {
+  display: none;
 }
 
 input::-ms-clear {
@@ -374,6 +378,15 @@ s {
   border-radius: var(--btn-radius, 0.25em);
 }
 
+.form-control {
+  font-size: var(--form-control-font-size, 1em);
+  padding-top: var(--form-control-padding-y, 0.5em);
+  padding-bottom: var(--form-control-padding-y, 0.5em);
+  padding-left: var(--form-control-padding-x, 0.75em);
+  padding-right: var(--form-control-padding-x, 0.75em);
+  border-radius: var(--form-control-radius, 0.25em);
+}
+
 :root {
   --z-index-header: 3;
   --z-index-popover: 5;
@@ -492,9 +505,19 @@ s {
   padding-top: var(--space-md);
 }
 
+.padding-x-xs {
+  padding-left: var(--space-xs);
+  padding-right: var(--space-xs);
+}
+
 .padding-x-md {
   padding-left: var(--space-md);
   padding-right: var(--space-md);
+}
+
+.padding-y-xxs {
+  padding-top: var(--space-xxs);
+  padding-bottom: var(--space-xxs);
 }
 
 .padding-y-sm {
@@ -625,6 +648,10 @@ s {
 
 .bg, [class^=bg-], [class*=" bg-"] {
   --bg-o: 1;
+}
+
+.bg-transparent {
+  background-color: transparent;
 }
 
 .bg {
@@ -945,6 +972,31 @@ a, .link {
   --form-control-padding-y: var(--space-xxs);
   --form-control-radius: var(--radius-md);
 }
+
+.form-control {
+  background: var(--color-bg-dark);
+  line-height: 1.2;
+  box-shadow: inset 0px 0px 0px 1px var(--color-contrast-lower);
+  transition: all 0.2s ease;
+}
+.form-control::-moz-placeholder {
+  opacity: 1;
+  color: var(--color-contrast-low);
+}
+.form-control::placeholder {
+  opacity: 1;
+  color: var(--color-contrast-low);
+}
+.form-control:focus, .form-control:focus-within {
+  background: var(--color-bg);
+  box-shadow: inset 0px 0px 0px 1px hsla(var(--color-contrast-lower-h), var(--color-contrast-lower-s), var(--color-contrast-lower-l), 0), 0px 0px 0px 2px var(--color-primary), var(--shadow-sm);
+  outline: none;
+}
+
+ .form-control[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
 /* -------------------------------- 
 
 File#: _1_accordion
@@ -1102,7 +1154,7 @@ Usage: codyhouse.co/license
 :root {
   /* --default variation only 👇 */
   --select-icon-size: 16px;
-  --select-icon-right-margin: var(--space-sm);
+  --select-icon-right-margin: var(--space-xxs);
   /* icon margin right */
   --select-text-icon-gap: var(--space-xxxs);
   /* gap between text and icon */
@@ -1110,6 +1162,15 @@ Usage: codyhouse.co/license
 
 .select {
   position: relative;
+}
+
+.select__input {
+  width: 100%;
+  height: 100%;
+  padding-right: calc(var(--select-icon-size) + var(--select-icon-right-margin) + var(--select-text-icon-gap)) !important;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 
 .select__icon {
@@ -1256,7 +1317,6 @@ html:not(.js) .select .icon {
   /* hide icon if JS = disabled */
   display: none;
 }
-
 /* -------------------------------- 
 
 File#: _1_list
