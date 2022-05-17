@@ -126,19 +126,19 @@
 }
 @media (min-width: 64rem) {
 
-  .col-4\@md {
-    --span: 4;
-  }
-
-   .col-4\@md {
-    flex-basis: calc((100% - (var(--grid-columns) - var(--gap-modifier, 1)) * var(--sub-gap-x)) * var(--span) / var(--grid-columns) + (var(--span) - 1) * var(--sub-gap-x));
-    max-width: calc((100% - (var(--grid-columns) - var(--gap-modifier, 1)) * var(--sub-gap-x)) * var(--span) / var(--grid-columns) + (var(--span) - 1) * var(--sub-gap-x));
-  }
-
   @media not all and (min-resolution: 0.001dpcm) {
   }
 }
 @media (min-width: 80rem) {
+
+  .col-4\@lg {
+    --span: 4;
+  }
+
+   .col-4\@lg {
+    flex-basis: calc((100% - (var(--grid-columns) - var(--gap-modifier, 1)) * var(--sub-gap-x)) * var(--span) / var(--grid-columns) + (var(--span) - 1) * var(--sub-gap-x));
+    max-width: calc((100% - (var(--grid-columns) - var(--gap-modifier, 1)) * var(--sub-gap-x)) * var(--span) / var(--grid-columns) + (var(--span) - 1) * var(--sub-gap-x));
+  }
 
   @media not all and (min-resolution: 0.001dpcm) {
   }
@@ -158,7 +158,8 @@
 
 html, body, div, span, object, iframe,
 h1, p,
-a, code, s,
+a, code,
+del, s,
 small, var,
 b, i, ul, li, label, embed, footer, header, section, summary,
 time, audio, video {
@@ -563,6 +564,10 @@ s {
   --max-width-xxl: 100rem;
   --max-width-xxxl: 120rem;
   --max-width-xxxxl: 150rem;
+}
+
+.max-width-xxs {
+  max-width: var(--max-width-xxs);
 }
 
 .max-width-sm {
