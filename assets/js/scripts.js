@@ -60,24 +60,12 @@ function Util(){}Util.hasClass=function(e,t){return e.classList.contains(t)},Uti
             <div class="notice__banner bg-contrast-lower padding-y-md shadow-md">
               <div class="container max-width-lg">
                 <div class="notice__header color-primary flex justify-between items-center text-sm">
-                  <div class="select">
-                    <select
-                      class="select__input form-control bg-transparent radius-md padding-y-xxs"
-                      v-model="currentLocale"
-                      @change="handleChangeLang"                          
-                    >
-                      <option value="de-de" name="de-de">de</option>
-                      <option value="en-gb" name="en-gb">en</option>
-                      <option value="ru-ru" name="ru-ru">ru</option>
-                    </select>
-                    <svg class="select__icon icon"><use xlink:href="../../assets/img/svg-defs.svg#icon__arrow-min-down"></use></svg>
-                  </div>
                   <div class="margin-left-auto">
                     <a href="${this.options.notification.link1.url}">${this.options.notification.link1.label}</a> | <a href="${this.options.notification.link2.url}">${this.options.notification.link2.label}</a>
                   </div>
                 </div>
                 <div class="notice__body">
-                    <div class="notice__pretitle"${this.options.notification.notificationPreTitle}</div>
+                    <div class="notice__pretitle">${this.options.notification.notificationPreTitle}</div>
                     <div class="notice__title">${this.options.notification.notificationtitle}</div>
                     <div class="notice__text margin-bottom-sm">${this.options.notification.mainText}</div>
                 </div>
@@ -117,14 +105,16 @@ function Util(){}Util.hasClass=function(e,t){return e.classList.contains(t)},Uti
             </button>
           </header>
         <!-- Tabs --> 
-          <div id="tabs-cookie-consent" class="padding-y-sm padding-x-md flex-grow overflow-auto momentum-scrolling">
+          <div id="tabs-cookie-consent" class="padding-y-md padding-x-md flex-grow overflow-auto momentum-scrolling">
+          <div class="margin-bottom-sm flex items-center justify-between">
+            <a href="${this.options.modal.link.url}">${this.options.modal.link.label}</a>
+          </div>
             <div class="tabs js-tabs">
-              <ul class="flex flex-wrap gap-sm js-tabs__controls" aria-label="Tabs Interface">
-                <li><a href="#tab1Panel1" class="tabs__control" aria-selected="true">${this.options.modal.tabs[0].tabTitle}</a></li>
-                <li><a href="#tab1Panel2" class="tabs__control">${this.options.modal.tabs[1].tabTitle}</a></li>
-                <li><a href="#tab1Panel3" class="tabs__control">${this.options.modal.tabs[2].tabTitle}</a></li>
+              <ul class="tab-btns grid js-tabs__controls" aria-label="Tabs Interface">
+                <li class="tab-btns__btn col-4@xs"><a href="#tab1Panel1" class="tabs__control btn tab-btns__btn btn--border-primary btn-tab width-100% radius-md-left" aria-selected="true">${this.options.modal.tabs[0].tabTitle}</a></li>
+                <li class="tab-btns__btn col-4@xs"><a href="#tab1Panel2" class="tabs__control btn tab-btns__btn btn--border-primary btn-tab width-100% radius-0">${this.options.modal.tabs[1].tabTitle}</a></li>
+                <li class="tab-btns__btn col-4@xs"><a href="#tab1Panel3" class="tabs__control btn tab-btns__btn btn--border-primary btn-tab width-100% radius-md-right">${this.options.modal.tabs[2].tabTitle}</a></li>
               </ul>
-            
               <div class="js-tabs__panels">
                 <section id="tab1Panel1" class="padding-top-md js-tabs__panel">
                   <div class="margin-bottom-md">${this.options.modal.tabs[0].description}</div>
