@@ -107,7 +107,7 @@ function Util(){}Util.hasClass=function(e,t){return e.classList.contains(t)},Uti
           <header class="bg-contrast-lower bg-opacity-50% padding-y-sm padding-x-md flex items-center justify-between flex-shrink-0">
             <h1 id="modal-title-4" class="text-truncate text-md">${this.options.modal[e].modalTitle}</h1>
 
-            <button class="reset modal__close-btn modal__close-btn--inner js-modal__close js-tab-focus">
+            <div class="reset modal__close-btn modal__close-btn--inner js-modal__close js-tab-focus">
               <svg class="icon icon--xs" viewBox="0 0 16 16">
                 <title>Close modal window</title>
                 <g stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10">
@@ -115,7 +115,7 @@ function Util(){}Util.hasClass=function(e,t){return e.classList.contains(t)},Uti
                   <line x1="2.5" y1="2.5" x2="13.5" y2="13.5"></line>
                 </g>
               </svg>
-            </button>
+            </div>
           </header>
         <!-- Tabs --> 
           <div id="tabs-cookie-consent" class="padding-y-md padding-x-md flex-grow overflow-auto momentum-scrolling">

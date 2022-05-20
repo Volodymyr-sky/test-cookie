@@ -1,6 +1,0 @@
-<svg>
-  <symbol id="icon__arrow-min-down" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
-      <rect x="4.22192" y="5.2749" width="6" height="1" rx="0.5" transform="rotate(45 4.22192 5.2749)" />
-      <rect width="6" height="1" rx="0.5" transform="matrix(0.707107 -0.707107 -0.707107 -0.707107 7.75732 10.2246)" />
-  </symbol>
-</svg>
