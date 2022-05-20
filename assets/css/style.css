@@ -1871,9 +1871,14 @@ Usage: codyhouse.co/license
 #cookie-container .accordion__header {
   margin-bottom: 0.75rem;
 }
+#cookie-container .accordion__header:hover {
+  background: none;
+  color: var(--color-black);
+}
 #cookie-container .accordion .accordion-more {
   display: flex;
   align-items: center;
+  font-weight: normal;
 }
 #cookie-container .accordion .accordion__item + .accordion__item {
   margin-top: 1.5rem;
